@@ -5,9 +5,9 @@ DPLR conf script
 1024 bonds
 1 bond types
 
-0.0 31.8 xlo xhi
-0.0 31.8 ylo yhi
-0.0 31.8 zlo zhi
+0.0 31.28 xlo xhi
+0.0 31.28 ylo yhi
+0.0 31.28 zlo zhi
 
 Masses
 
