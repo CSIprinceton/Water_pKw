@@ -1,0 +1,79 @@
+{
+    "_comment": " model parameters",
+    "model": {
+	"type_map":	["O","H"],
+	"descriptor" :{
+	    "type":		"se_e2_a",
+            "sel":		[64,120],
+            "rcut_smth":	3.00,
+            "rcut":		6.00,
+            "neuron":		[120, 120, 120],
+	    "resnet_dt":	false,
+	    "axis_neuron":	12,
+	    "seed":		1,
+	    "_comment":		"that's all"
+	},
+	"fitting_net" : {
+	    "neuron":		[120, 120, 120],
+	    "resnet_dt":	true,
+	    "seed":		1,
+	    "_comment":		" that's all"
+	},
+        "modifier": {
+            "type":             "dipole_charge",
+            "model_name":       "graphdw1.pb",
+            "model_charge_map": [-8],
+            "sys_charge_map":   [6, 1],
+            "ewald_h":          1.0,
+            "ewald_beta":       0.40
+        },
+	"_comment":	" that's all"
+    },
+
+    "learning_rate" :{
+	"type":		"exp",
+	"start_lr":	0.005,
+	"decay_steps":	5000,
+	"decay_rate":	0.95,
+	"_comment":	"that's all"
+    },
+
+    "loss" :{
+        "type":         "ener",
+        "start_pref_e": 0.02,
+        "limit_pref_e": 8,
+        "start_pref_f": 1000,
+        "limit_pref_f": 1,
+        "start_pref_v": 0.00,
+        "limit_pref_v": 0,
+        "_comment":     " that's all"
+    },
+
+    "_comment": " traing controls",
+    "training" : {
+        "systems":	["../raw_files/water",
+	      		 "../raw_files/water_pimd",
+	      		 "../raw_files/h3o_plus",
+	      		 "../raw_files/oh_minus"],
+	"set_prefix":	"set",    
+	"stop_batch":	1000000,
+	"batch_size":	1,
+
+	"seed":		1,
+
+	"_comment": " display and restart",
+	"_comment": " frequencies counted in batch",
+	"disp_file":	"lcurve.out",
+	"disp_freq":	100,
+	"numb_test":	10,
+	"save_freq":	1000,
+	"disp_training":true,
+	"time_training":true,
+	"profiling":	false,
+	"profiling_file":"timeline.json",
+	"_comment":	"that's all"
+    },
+
+    "_comment":		"that's all"
+}
+

@@ -1,0 +1,31 @@
+# vim: ft=plumed
+RESTART
+UNITS LENGTH=A TIME=fs
+GROUP ATOMS=1-64   LABEL=Ow
+GROUP ATOMS=65-192 LABEL=hydrogen_atoms
+
+WaterpKw  LABEL=solv   GROUPA=Ow GROUPB=hydrogen_atoms LAMBDA=-8  D_0=2 
+
+UPPER_WALLS ARG=solv.tc AT=2.2 KAPPA=400.0 EXP=2 LABEL=uw
+UPPER_WALLS ARG=solv.sd AT=6.25 KAPPA=100.0 EXP=2 LABEL=uw2
+
+allbias: COMBINE ARG=uw.bias,uw2.bias PERIODIC=NO
+
+METAD ...
+LABEL=metad
+ARG=solv.sd
+PACE=2000000
+HEIGHT=0.0
+SIGMA=0.2
+FILE=HILLS
+BIASFACTOR=20
+TEMP=330
+... METAD
+
+FLUSH STRIDE=10
+
+PRINT ...
+ ARG=solv.sd,solv.tc,metad.*,allbias
+ STRIDE=200
+ FILE=COLVAR
+... PRINT
