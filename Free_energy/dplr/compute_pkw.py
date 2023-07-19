@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 c0=6.023E23/1.E27 #Standard concentration in atoms/A3
 
 def load_fes(sys):
-  f=np.loadtxt("{}/fes_.dat".format(sys)).T
+  f=np.loadtxt("{}/fes.dat".format(sys)).T
   return f
 
 def integrate(F,S,Sc):

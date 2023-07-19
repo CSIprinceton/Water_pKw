@@ -13,9 +13,8 @@ nbins=int(np.max(colvar[1])/0.05)
 bias=colvar[3]+colvar[5]
 hist,bins=np.histogram(colvar[1],bins=nbins,weights=np.exp(bias/(Kb*T)))
 bins=(bins[1:]+bins[:-1])/2.
-hist/=bins**2*(bins[1]-bins[0])
-
-hist/=np.trapz(bins**2*hist,bins)*(bins[1]-bins[0])/rho
+hist/=4*np.pi*bins**2*(bins[1]-bins[0])
+hist/=4*np.pi*np.trapz(bins**2*hist,bins)*(bins[1]-bins[0])/rho
 
 fes=-np.log(hist)
 
