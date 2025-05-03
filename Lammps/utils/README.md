@@ -29,7 +29,7 @@ echo 1 | ./rdf_wi.x traj.lammpstrj input.dat
 ```
 
 1 in this case is the index of O atoms  
-traj.lammpstrj is the name of the lammpstrj trajectory file  
+traj.lammpstrj is the name of the lammpstrj trajectory file (coordinated have to be in scaled atom coordinates)
 
 Notes: this RDF codes is not general, and is designed to work with the atomic convention adopted in this repo.  
 Please modify the source code if you want to make this code applicable to a different systems.
