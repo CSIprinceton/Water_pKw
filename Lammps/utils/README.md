@@ -25,10 +25,10 @@ boxc: box length along c
 3) Run the code
 
 ```
-echo 1 | ./rdf_wi.x traj.lammpstrj input.dat
+echo a b | ./rdf_wi.x traj.lammpstrj input.dat
 ```
 
-1 in this case is the index of O atoms  
+a and b are 1 or 2, and they correspond to the element index. 1 = O, 2= H. a is the atom belonging to the water ion. b is any other atom.  
 traj.lammpstrj is the name of the lammpstrj trajectory file (coordinated have to be in scaled atom coordinates)
 
 Notes: this RDF codes is not general, and is designed to work with the atomic convention adopted in this repo.  
